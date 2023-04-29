@@ -8,8 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $payment = isset($_POST["payment"]) ? $_POST["payment"] : "";
     $type = isset($_POST["type"]) ? $_POST["type"] : ""; 
 
-    if ($type != "ride" && $type != "ship"&& $type != "order") {
-        echo "Invalid  type";
+    if ($type != "ride" && $type != "ship" && $type != "order") {
+        echo "Invalid type";
         exit;
     }
     if ($payment != "cash" && $payment != "visa") {
@@ -17,11 +17,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Construct the SQL query to insert the data into the database
+
     $sql = "INSERT INTO request (name, location, destination, payment, type)
             VALUES ('$name', '$location', '$destination', '$payment', '$type')";
 
-$result = $conn->query($sql);
-    $conn->close();
-    exit;
-}
+    $result= $conn->query($sql) ;
+        $conn->close();
+
+       
+    //     if ($type == "ride") {
+           
+    //         exit;
+    //     } elseif ($type == "ship") {
+            
+    //         exit;
+    //     } elseif ($type == "order") {
+            
+    //         exit;
+    //     }
+    // } else {
+    //     echo "Error: " . $sql . "<br>" . $conn->error;
+    // }
